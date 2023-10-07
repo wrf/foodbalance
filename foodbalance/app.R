@@ -18,7 +18,7 @@ library(dplyr)
 library(maps)
 
 DEBUG=TRUE
-app_version="v1.33"
+app_version="v1.34"
 
 # current host of this file at:
 setwd("~/git/foodbalance/foodbalance/")
@@ -258,14 +258,23 @@ ui <- fluidPage(
 
     mainPanel(width="100%",
               verbatimTextOutput(outputId = "showingWhat"),
+              h3("Product overview:", style="color:#21632e"),
+              column(4,
+                     plotOutput(outputId = "prodBarplot", height="100px" )
+              ),
+              column(4,
+                     plotOutput(outputId = "exportBarplot", height="100px" )
+              ),
+              column(4,
+                     plotOutput(outputId = "importBarplot", height="100px" )
+              ),
               h3("Scroll down for raw data table.", style="color:#21632e"),
               htmlOutput(outputId = "foodDesc"),
               plotOutput(outputId = "worldMap",
                  height="650px"
                  ),
               plotOutput(outputId = "rankedBarplot",
-                         height="200px"
-                 ),
+                         height="200px" ),
               h3("Country or region data:", style="color:#21632e"),
               p("Note: all units are in 1000 tonnes, kilotonnes, i.e. M kg"),
               tableOutput("countryInfo"),
@@ -289,7 +298,7 @@ ui <- fluidPage(
               p("To download the raw data from the UN FAO Statistics Division, go to:"),
               a("www.fao.org/faostat/en/#data/FBS", href="https://www.fao.org/faostat/en/#data/FBS"),
               br(), br(),
-              p("App created by WRF, last modified by WRF 2023-09-05"),
+              p("App created by WRF, last modified by WRF 2023-10-07"),
               br()
     ) # end mainPanel
   ) # end verticalLayout
@@ -355,7 +364,7 @@ server <- function(input, output) {
       labs(x=NULL, y=paste(input$year, input$elementType,"of",input$itemType) ) +
       scale_fill_gradientn(colours = color_set,
                            breaks = color_bins,
-                           na.value="gray70", trans = "log10") +
+                           na.value="gray70") +
       geom_bar( stat="identity", show.legend = FALSE,
                 aes(reorder(region, .data[[input$year]]), .data[[input$year]], fill=.data[[input$year]]) )
   })
@@ -365,6 +374,82 @@ server <- function(input, output) {
     ggbars()
   })
   
+  
+  #####
+  # draw barplots of production, exports, and imports
+  output$prodBarplot <- renderPlot({
+    fd_filt <- filter(fooddata_recode, ! region %in% is_not_country,
+                      Item==input$itemType, Element=="Production" ) %>%
+      slice_max(order_by=get(input$year), n=5)
+    
+    if (input$itemType %in% is_meat) {
+      color_set = c("#632121")
+    } else if (input$itemType %in% is_fish) {
+      color_set = c("#06246f")
+    } else if (input$itemType %in% is_plant) {
+      color_set = c("#21632e")
+    } else if (input$itemType %in% is_alcohol) {
+      color_set = c("#632159")
+    } else { # implying is_spice
+      color_set = c("#a37d17")
+    }
+
+    ggplot(fd_filt, aes(x=region, y=input$year ) ) +
+      coord_flip() +
+      scale_y_continuous(expand = c(0,0) ) +
+      labs(x=NULL, y=paste(input$year, "Top 5 Producers of",input$itemType) ) +
+      geom_bar( stat="identity", show.legend = FALSE, fill = color_set,
+                aes(reorder(region, .data[[input$year]]), .data[[input$year]], fill=.data[[input$year]]) )
+  })
+  
+  #
+  output$exportBarplot <- renderPlot({
+    fd_filt <- filter(fooddata_recode, ! region %in% is_not_country,
+                      Item==input$itemType, Element=="Export Quantity" ) %>%
+      slice_max(order_by=get(input$year), n=5)
+    if (input$itemType %in% is_meat) {
+      color_set = c("#632121")
+    } else if (input$itemType %in% is_fish) {
+      color_set = c("#06246f")
+    } else if (input$itemType %in% is_plant) {
+      color_set = c("#21632e")
+    } else if (input$itemType %in% is_alcohol) {
+      color_set = c("#632159")
+    } else { # implying is_spice
+      color_set = c("#a37d17")
+    }
+    ggplot(fd_filt, aes(x=region, y=input$year ) ) +
+      coord_flip() +
+      scale_y_continuous(expand = c(0,0) ) +
+      labs(x=NULL, y=paste(input$year, "Top 5 Exporters of",input$itemType) ) +
+      geom_bar( stat="identity", show.legend = FALSE, fill = color_set,
+                aes(reorder(region, .data[[input$year]]), .data[[input$year]], fill=.data[[input$year]]) )
+  })
+  
+  output$importBarplot <- renderPlot({
+    fd_filt <- filter(fooddata_recode, ! region %in% is_not_country,
+                      Item==input$itemType, Element=="Import Quantity" ) %>%
+      slice_max(order_by=get(input$year), n=5)
+    if (input$itemType %in% is_meat) {
+      color_set = c("#632121")
+    } else if (input$itemType %in% is_fish) {
+      color_set = c("#06246f")
+    } else if (input$itemType %in% is_plant) {
+      color_set = c("#21632e")
+    } else if (input$itemType %in% is_alcohol) {
+      color_set = c("#632159")
+    } else { # implying is_spice
+      color_set = c("#a37d17")
+    }
+    ggplot(fd_filt, aes(x=region, y=input$year ) ) +
+      coord_flip() +
+      scale_y_continuous(expand = c(0,0) ) +
+      labs(x=NULL, y=paste(input$year, "Top 5 Importers of",input$itemType) ) +
+      geom_bar( stat="identity", show.legend = FALSE, fill = color_set,
+                aes(reorder(region, .data[[input$year]]), .data[[input$year]], fill=.data[[input$year]]) )
+  })
+  
+  #####
   # create map ggplot object
   mapgg = reactive({
     # subset food data
