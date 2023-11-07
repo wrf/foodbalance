@@ -5,7 +5,7 @@ This is, of course, a simplification, as cultural factors and movement of people
 
 Production of most of these foods can be observed at a global scale. Based on my [earlier version of fisheries only](https://github.com/wrf/misc-analyses/tree/master/fisheries), I made another [shinyapp](https://shiny.rstudio.com/) that can redraw the choropleth map based on imports, exports, and production of various food products around the world. The top 20 items are also displayed in a barplot below the map. It should run on another system by [downloading the original .csv file from the UN](http://www.fao.org/faostat/en/#data/FBS), placing it into the `./data` folder. This visualization is presumably what was intended to be displayed with the problematic [FAO FBS visualizations](https://www.fao.org/faostat/en/#data/FBS/visualize), which never worked any time I had visited their website.
 
-The app v1.32 [is currently live here](https://wrfbiolum.shinyapps.io/foodbalance/).
+The app v1.34 [is currently live here](https://wrfbiolum.shinyapps.io/foodbalance/).
 
 The drop down menu will change whatever is displayed. There is a table at the bottom, and display options can be controlled as well. Lat-lon can be changed for the map view, but the rendering is likely to distort the map unless it is roughly 2:1 aspect ratio. The `Print PDF` button will print the map as a `.pdf` file of whatever food category is displayed on the screen. The plot titles and file name should adapt automatically.
 
@@ -40,9 +40,11 @@ Despite the actual origins from Ivory Coast, Ghana, Indonesia, and Nigeria, choc
 Why does the milk matter so much more than the [terroir](https://en.wikipedia.org/wiki/Terroir) of the cocoa? Apparently, this stems from a number of lawsuits in Europe (see [Cidell 2006](https://doi.org/10.1016/j.geoforum.2006.02.006) for discussion over the "Chocolate War").
 
 ## soybeans ##
-Global soybean production is dominated by the USA, Brazil, and Argentina. Most of this is exported, and used as animal feed (i.e. probably mostly pigs and cows). This is NOT mostly used to feed people in the form of tofu, so unfortunately there is no [international vegan conspiracy](https://en.wikipedia.org/wiki/Veganism#Philosophy). As these soybeans end up being transported across the planet to feed animals in Europe and China, this transport has been the subject of recent concern (see [Hong 2022](https://www.science.org/doi/10.1126/science.abj1572) - paywalled).
+Global [soybean](https://en.wikipedia.org/wiki/Soybean) production is dominated by the USA, Brazil, and Argentina. Most of this is exported, and used as animal feed (i.e. probably mostly pigs and cows). This is NOT mostly used to feed people in the form of tofu, so unfortunately there is no [international vegan conspiracy](https://en.wikipedia.org/wiki/Veganism#Philosophy). As these soybeans end up being transported across the planet to feed animals in Europe and China, this transport has been the subject of recent concern (see [Hong 2022](https://www.science.org/doi/10.1126/science.abj1572) - paywalled).
 
 ![map of Soyabeans Production in 2019](https://github.com/wrf/foodbalance/blob/main/images/Soyabeans_Production_Y2019.png)
+
+China also imports [cassava](https://en.wikipedia.org/wiki/Cassava) at similar quantities (top importer globally), also used as animal feed.
 
 ## offal meats ##
 Organ meats appear to have gone out of style in much of Europe, but are still imported by China. I suspect that mixed organ meats were a part of most cuisines for a long time out of necessity, including famous dishes like [haggis](https://en.wikipedia.org/wiki/Haggis), [Saumagen](https://en.wikipedia.org/wiki/Saumagen), [foie gras](https://en.wikipedia.org/wiki/Foie_gras), or various [tripe soups](https://en.wikipedia.org/wiki/Tripe_soup). Even blood had its place for [black pudding](https://en.wikipedia.org/wiki/Black_pudding), [boudin](https://en.wikipedia.org/wiki/Boudin), [Blutwurst](https://de.wikipedia.org/wiki/Blutwurst), [morcilla](https://es.wikipedia.org/wiki/Morcilla), among others. 
