@@ -40,11 +40,16 @@ Despite the actual origins from Ivory Coast, Ghana, Indonesia, and Nigeria, choc
 Why does the milk matter so much more than the [terroir](https://en.wikipedia.org/wiki/Terroir) of the cocoa? Apparently, this stems from a number of lawsuits in Europe (see [Cidell 2006](https://doi.org/10.1016/j.geoforum.2006.02.006) for discussion over the "Chocolate War").
 
 ## soybeans ##
-Global [soybean](https://en.wikipedia.org/wiki/Soybean) production is dominated by the USA, Brazil, and Argentina. Most of this is exported, and used as animal feed (i.e. probably mostly pigs and cows). This is NOT mostly used to feed people in the form of tofu, so unfortunately there is no [international vegan conspiracy](https://en.wikipedia.org/wiki/Veganism#Philosophy). As these soybeans end up being transported across the planet to feed animals in Europe and China, this transport has been the subject of recent concern (see [Hong 2022](https://www.science.org/doi/10.1126/science.abj1572) - paywalled).
+Global [soybean](https://en.wikipedia.org/wiki/Soybean) production is dominated by the USA, Brazil, and Argentina. Most of this is exported, and used as animal feed (i.e. probably mostly pigs and cows). This is NOT mostly used to feed people in the form of tofu, so unfortunately there is no [international vegan conspiracy](https://en.wikipedia.org/wiki/Veganism); the amount used for food is single-digit percentage, depending on country (China is 6%, USA is under 1%). As these soybeans end up being transported across the planet to feed animals in Europe and China, this transport has been the subject of recent concern for transportation costs and GHG emissions (see [Hong 2022](https://www.science.org/doi/10.1126/science.abj1572) - paywalled).
 
 ![map of Soyabeans Production in 2019](https://github.com/wrf/foodbalance/blob/main/images/Soyabeans_Production_Y2019.png)
 
-China also imports [cassava](https://en.wikipedia.org/wiki/Cassava) at similar quantities (top importer globally), also used as animal feed.
+## cassava ##
+China also imports the most [cassava](https://en.wikipedia.org/wiki/Cassava) (top importer globally), and again mostly used as animal feed. Only 9% as food, possibly eating the roots or leaves directly, or converted into starch for foods (like [tapioca](https://en.wikipedia.org/wiki/Tapioca_pearl)). Production is very high in Africa (Nigeria, DR Congo, Ghana), but most of that is probably consumed locally. The imports to China likely are produced in other Asian countries like Thailand (biggest exporter), Vietnam, then Laos.
+
+![map of Cassave Export in 2020](https://github.com/wrf/foodbalance/blob/main/images/Cassava_and_products_Export_Quantity_Y2020.png)
+
+Similarly, [corn](https://en.wikipedia.org/wiki/Maize) is produced at high quantities in China, and only 3% is eaten by people, most of the rest being used in animal feed.
 
 ## offal meats ##
 Organ meats appear to have gone out of style in much of Europe, but are still imported by China. I suspect that mixed organ meats were a part of most cuisines for a long time out of necessity, including famous dishes like [haggis](https://en.wikipedia.org/wiki/Haggis), [Saumagen](https://en.wikipedia.org/wiki/Saumagen), [foie gras](https://en.wikipedia.org/wiki/Foie_gras), or various [tripe soups](https://en.wikipedia.org/wiki/Tripe_soup). Even blood had its place for [black pudding](https://en.wikipedia.org/wiki/Black_pudding), [boudin](https://en.wikipedia.org/wiki/Boudin), [Blutwurst](https://de.wikipedia.org/wiki/Blutwurst), [morcilla](https://es.wikipedia.org/wiki/Morcilla), among others. 
